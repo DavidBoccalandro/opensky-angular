@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { LoginService } from '../services/login.service';
+import { LocalStorageService } from 'src/app/services/local-storage.service';
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,11 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class LoginComponent implements OnInit {
   form: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(
+    private fb: FormBuilder,
+    private loginService: LoginService,
+    private localStorage: LocalStorageService
+  ) {
     this.form = this.fb.group({
       username: [''],
       password: [''],
@@ -19,6 +25,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit() {
-    console.log(this.form.value);
+    this.loginService.login(this.form.value).subscribe((token: string) => {
+      this.localStorage.setItem('token', token);
+    });
   }
 }
