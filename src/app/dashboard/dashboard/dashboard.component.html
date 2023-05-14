@@ -1,1 +1,5 @@
-<p>dashboard works!</p>
+<app-airport
+  *ngFor="let airport of airports"
+  [airport]="airport"
+  [date]="date"
+></app-airport>
