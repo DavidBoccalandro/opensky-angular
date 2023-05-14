@@ -4,7 +4,6 @@ import { LoginComponent } from './login/login.component';
 import { LoginRoutingModule } from './login-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LoginService } from './services/login.service';
-import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -12,7 +11,6 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     LoginRoutingModule,
     ReactiveFormsModule,
-    HttpClientModule,
   ],
   providers: [LoginService],
 })
